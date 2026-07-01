@@ -55,6 +55,14 @@ Summary (buckets), classification split, trend by day, manual-review drivers (de
 titles), noisy senders/domains, policy attribution, automatic handling (post-delivery,
 delivery split, detection methods), user-reported, incidents, raw alerts, and an Info sheet.
 
+## Manual alternative (no admin consent)
+
+If you can't grant the Graph admin consent the script needs, you can reproduce the exact same
+workbook by hand from the Defender portal (**Security Reader** is enough - no consent). See
+[docs/manual-workbook-via-portal.md](docs/manual-workbook-via-portal.md): it maps each sheet
+to its portal export, gives the KQL to paste into Advanced Hunting, and an Excel formula that
+reproduces the bucketing logic.
+
 ## Data sources
 
 - `GET /security/alerts_v2` (filtered to `serviceSource eq 'microsoftDefenderForOffice365'`)
@@ -68,3 +76,7 @@ delivery split, detection methods), user-reported, incidents, raw alerts, and an
 Invoke-ScriptAnalyzer -Path . -Recurse -Settings PSScriptAnalyzerSettings.psd1
 Invoke-Pester tests/
 ```
+
+The advanced-hunting KQL queries are validated against Microsoft's `Kusto.Language` parser
+(the grammar the portal uses) - they parse and resolve cleanly against the
+`EmailEvents` / `EmailPostDeliveryEvents` schema.

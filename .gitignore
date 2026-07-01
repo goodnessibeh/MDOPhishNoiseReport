@@ -1,5 +1,7 @@
 # Generated workbooks
 *.xlsx
+# ...but keep the committed blank template
+!templates/*.xlsx
 
 # PowerShell / test output
 *.log
