@@ -1,0 +1,11 @@
+# Generated workbooks
+*.xlsx
+
+# PowerShell / test output
+*.log
+TestResults/
+coverage.xml
+
+# OS cruft
+.DS_Store
+Thumbs.db
